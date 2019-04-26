@@ -1,0 +1,31 @@
+<HTML>
+    <head>
+        <link rel="stylesheet" href="main.css">
+        <script src="main.js"></script>
+    </head>
+
+    <body>
+
+    <div class="container">   
+            <div class="background">
+                <h4>Welcome to<br>Sam's List</h4>
+                <p>Please create an account</p>
+                <form action="logic.js">
+                    <input type="email" id="userName" class="user-input" placeholder="email address" required="required"/>
+                    </br>
+                    </br>
+                    <input type="password" id="userPassword" class="user-input" placeholder="password" required="required"/>
+                    </br>
+                    </br>
+                    <input type="password" id="userPasswordCheck" class="user-input" placeholder="confirm password" required="required"/>
+                    </br>
+                    <input type="checkbox" class="checkbox" onclick="showPassword()"/>Show Password
+                    </br>             
+                    <p id="output"></p>
+                    <button id="register" type="submit" onclick="register();">register</button>
+                </form>
+            </div>
+    </div>
+
+    </body>
+</HTML>

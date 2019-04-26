@@ -1,0 +1,47 @@
+<HTML>
+    <head>
+        <link rel="stylesheet" href="main.css">
+    </head>
+
+    <body>
+
+    <!-- <div class="container">    -->
+        <div class="background">
+            <h4>Hello userName</h4>            
+            <h5>New task</h5>
+            <!-- <form id="newTask"> -->
+                <div class="grid-container">
+                    <div id="grid-item1">Description:</div>
+                    <div id="grid-item2">Priority:</div>
+                    <div id="grid-item3">Status:</div>
+                    <div id="grid-item4">Do by:</div>
+                        <div id="grid-item5"><textarea type="text" id="task" class="user-input" rows="1" placeholder="task" required="required"></textarea></div>
+                        <div id="grid-item6"><select id="priority">
+                                <option value="low">low</option>
+                                <option value="medium">medium</option>
+                                <option value="high">high</option>
+                                <option value="top">TOP</option>
+                        </select></div>
+                        <div id="grid-item7"><select id="status">
+                                <option value="not-started">not started</option>
+                                <option value="started">started</option>
+                                <option value="progressing">progressing</option>
+                                <option value="finishing-up">finishing up</option>
+                                <option value="completed">completed</option>
+                        </select></div> 
+                        <div id="grid-item8"><input type="date" id="date" class="user-input" required="required"/></div>                        
+                        <div id="grid-item9"><button onclick="create()" type="submit" id="create" form="newTask" value="Submit">create</button></div>
+                </div>
+            <!-- </form>     -->
+                <h4>Ongoing tasks</h4>
+                <div class="grid-container" id="prevTasks">
+                    <div id="grid-item11">Description:</div>
+                    <div id="grid-item12">Priority:</div>
+                    <div id="grid-item13">Status:</div>
+                    <div id="grid-item14">Do by:</div>
+                </div>
+        </div>
+    <!-- </div> -->
+    <script src="main.js"></script>
+    </body>
+</HTML>
