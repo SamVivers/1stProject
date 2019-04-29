@@ -18,10 +18,10 @@ public class Task {
 	private String status;
 	private String do_by;
 	
-	private Long getId() {
+	public Long getId() {
 		return id;
 	}
-	private void setId(Long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getUsername() {
@@ -54,8 +54,7 @@ public class Task {
 	public void setDo_by(String do_by) {
 		this.do_by = do_by;
 	}
-	public Task(Long id, String username, String description, String priority, String status, String do_by) {
-		this.id = id;
+	public Task(String username, String description, String priority, String status, String do_by) {
 		this.username = username;
 		this.description = description;
 		this.priority = priority;
