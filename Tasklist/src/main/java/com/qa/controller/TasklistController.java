@@ -27,6 +27,10 @@ public class TasklistController {
     public List<Task> list(@PathVariable String username){
         return tasklistRepository.findByUsername(username);
     }
+	@RequestMapping(value = "tasks", method = RequestMethod.GET)
+    public List<Task> list(){
+        return tasklistRepository.findAll();
+    }
 	@RequestMapping(value = "tasks", method = RequestMethod.POST)
     public Task create(@RequestBody Task task){
         return tasklistRepository.saveAndFlush(task);
