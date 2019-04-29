@@ -63,15 +63,12 @@ function update() {
     
 }
 
-function remove() {
-    let URL='http://localhost:8081/api/tasklist/tasks/' + document.getElementById().value;
+function remove(id) {
+    let URL='http://localhost:8081/api/tasklist/tasks/' + id;
     let request = new XMLHttpRequest();
-    request.open('GET', URL);
+    request.open('DELETE', URL);
     request.responseType = 'json';
     request.onload = function () {
-        console.log(request.response);
-        tasks = request.response;
-        display();
     }
     request.send();
 }
@@ -101,21 +98,25 @@ function display() {
         eleDesc.setAttribute("id", "grid=item" + x++);
         eleDesc.innerHTML = task.description;
         document.getElementById("prevTasks").append(eleDesc);
+
         elePri = document.createElement("div");
         elePri.setAttribute("id", "grid=item" + x++);
         elePri.innerHTML = task.priority;
         document.getElementById("prevTasks").append(elePri);
+
         eleStat = document.createElement("div");
         eleStat.setAttribute("id", "grid=item" + x++);
         eleStat.innerHTML = task.status;
         document.getElementById("prevTasks").append(eleStat);
+
         eleDo = document.createElement("div");
         eleDo.setAttribute("id", "grid=item" + x++);
         eleDo.innerHTML = task.do_by;
         document.getElementById("prevTasks").append(eleDo);
+
         eleBut = document.createElement("div");
         eleBut.setAttribute("id", "grid=item" + x++);
-        eleBut.innerHTML ='<button id="update" onclick="update();">update</button><button id="delete" onclick="remove();">delete</button>';
+        eleBut.innerHTML ='<button id="update" onclick="update(' + task.id + ');">update</button><button id="delete" onclick="remove(' + task.id + ');">delete</button>';
         document.getElementById("prevTasks").append(eleBut);
     }
 }
