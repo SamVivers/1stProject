@@ -22,10 +22,25 @@ public class UserController {
     public User create(@RequestBody User user){
         return userRepository.saveAndFlush(user);
     }
+	
 	@RequestMapping(value = "user/{username}", method = RequestMethod.GET)
-    public User get(@PathVariable String username){
-        return userRepository.findByUsername(username);
+    public int get(@PathVariable String username){
+		User exists = userRepository.findByUsername(username);
+        if (exists != null) {
+        	return 1;
+        }
+		return 0;
     }
+	
+	@RequestMapping(value = "user/{username}", method = RequestMethod.POST)
+    public int get(@RequestBody User user){
+		User login = userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
+		if (login != null) {
+			return 1;
+		}
+        return 0;
+    }
+	
 	@RequestMapping(value = "user/{username}", method = RequestMethod.PUT)
     public User update(@PathVariable String username, @RequestBody User user){
 		User existingUser = userRepository.findByUsername(username);
