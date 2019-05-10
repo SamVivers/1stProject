@@ -1,5 +1,6 @@
 package com.qa.controller;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ public class UserController {
 
 	@RequestMapping(value = "user", method = RequestMethod.POST)
     public User create(@RequestBody User user){
+		user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
         return userRepository.saveAndFlush(user);
     }
 	
@@ -34,8 +36,8 @@ public class UserController {
 	
 	@RequestMapping(value = "user/{username}", method = RequestMethod.POST)
     public int get(@RequestBody User user){
-		User login = userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
-		if (login != null) {
+		User login = userRepository.findByUsername(user.getUsername());
+		if (BCrypt.checkpw(user.getPassword(), login.getPassword())) {
 			return 1;
 		}
         return 0;
